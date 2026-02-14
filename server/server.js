@@ -28,7 +28,6 @@ app.use(cors({
     "http://localhost:5173",
     "https://e-commerce-website-code-ogrz.vercel.app",
     "https://www.eshopcart.live",
-    "https://eshopcart.live"
   ],
   credentials: true
 }));
