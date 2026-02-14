@@ -38,6 +38,10 @@ app.use("/api/users", UserRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/payment", paymentRoutes);
 
+app.get("/", (req, res) => {
+    res.send("Welcome to the E-commerce API");
+});
+
 app.use(errorMiddleware);
 
 if (!process.env.VERCEL) {
