@@ -26,7 +26,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors({
   origin: [
     "http://localhost:5173",
-    "https://e-commerce-website-code-9aq2.vercel.app"
+    "https://e-commerce-website-code-ogrz.vercel.app"
   ],
   credentials: true
 }));
@@ -43,15 +43,15 @@ app.use("/api/admin", adminRoutes);
 app.use("/api/payment", paymentRoutes);
 
 app.get("/", (req, res) => {
-    res.send("Welcome to the E-commerce API");
+  res.send("Welcome to the E-commerce API");
 });
 
 app.use(errorMiddleware);
 
 if (!process.env.VERCEL) {
-    app.listen(PORT, () => {
-        console.log(`Server is running to the port: ${PORT}`);
-    });
+  app.listen(PORT, () => {
+    console.log(`Server is running to the port: ${PORT}`);
+  });
 }
 
 module.exports = app;
