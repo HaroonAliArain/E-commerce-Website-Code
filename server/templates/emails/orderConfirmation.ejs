@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmation</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f4f4f7; font-family: 'Segoe UI', Arial, sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f4f4f7; padding: 40px 0;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">
+          
+          <!-- Header -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #6366f1, #8b5cf6); padding: 36px 40px; text-align: center;">
+              <h1 style="margin: 0; color: #ffffff; font-size: 26px; font-weight: 700; letter-spacing: -0.5px;">🛍️ E-Commerce App</h1>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding: 40px;">
+              <h2 style="margin: 0 0 8px; color: #1e1b4b; font-size: 22px; font-weight: 600;">
+                Order Confirmed! ✅
+              </h2>
+              <p style="margin: 0 0 28px; color: #4b5563; font-size: 15px; line-height: 1.7;">
+                Thank you for your purchase. Here's a summary of your order:
+              </p>
+
+              <!-- Order Details Card -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9fafb; border-radius: 10px; border: 1px solid #e5e7eb;">
+                <tr>
+                  <td style="padding: 24px 28px;">
+                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td style="padding-bottom: 14px;">
+                          <span style="display: block; color: #9ca3af; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Order ID</span>
+                          <span style="display: block; color: #1e1b4b; font-size: 15px; font-weight: 600; margin-top: 4px;"><%= orderId %></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 14px; border-top: 1px solid #e5e7eb; padding-top: 14px;">
+                          <span style="display: block; color: #9ca3af; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Total Price</span>
+                          <span style="display: block; color: #1e1b4b; font-size: 22px; font-weight: 700; margin-top: 4px;">$ <%= totalPrice %></span>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="border-top: 1px solid #e5e7eb; padding-top: 14px;">
+                          <span style="display: block; color: #9ca3af; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Status</span>
+                          <span style="display: inline-block; margin-top: 6px; padding: 4px 14px; background-color: #eef2ff; color: #6366f1; font-size: 13px; font-weight: 600; border-radius: 20px;"><%= orderStatus %></span>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <p style="margin: 28px 0 0; color: #4b5563; font-size: 15px; line-height: 1.7;">
+                We'll notify you when your order ships. If you have any questions, feel free to reach out to our support team.
+              </p>
+            </td>
+          </tr>
+
+          <!-- Divider -->
+          <tr>
+            <td style="padding: 0 40px;">
+              <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 0;" />
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 24px 40px 32px; text-align: center;">
+              <p style="margin: 0; color: #9ca3af; font-size: 13px; line-height: 1.6;">
+                You received this email because you placed an order on E-Commerce App.<br />
+                &copy; <%= new Date().getFullYear() %> E-Commerce App. All rights reserved.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>

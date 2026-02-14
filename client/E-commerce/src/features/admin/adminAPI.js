@@ -1,0 +1,6 @@
+import api from "../../services/api";
+
+export const getDashboardStats = async () => {
+  const response = await api.get("/api/admin/dashboard");
+  return response.data;
+};
