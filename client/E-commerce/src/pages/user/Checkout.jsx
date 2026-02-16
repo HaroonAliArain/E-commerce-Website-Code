@@ -28,6 +28,10 @@ const Checkout = () => {
   const [loading, setLoading] = useState(false);
   const [step, setStep] = useState(1); // 1: Shipping & Method, 2: Card Payment
 
+  // Check if shipping form is fully filled
+  const isShippingComplete = shippingAddress.address && shippingAddress.city && shippingAddress.postalCode && shippingAddress.country;
+  const isCODReady = paymentMethod === "Cash payment" && isShippingComplete;
+
   // Calculate totals
   const itemsPrice = cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
   const shippingPrice = 10;
@@ -200,19 +204,21 @@ const Checkout = () => {
       <div className="flex items-center gap-4 pb-4">
         <div className={`flex items-center gap-2 ${step >= 1 ? 'text-(--color-primary-600)' : 'text-theme-muted'}`}>
           <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${step >= 1 ? 'bg-(--color-primary-600) text-white' : 'bg-theme-tertiary text-theme-muted'}`}>
-            {step >= 2 ? <Check className="w-5 h-5" /> : 1}
+            {step >= 2 || isCODReady ? <Check className="w-5 h-5" /> : 1}
           </div>
           <span className="font-medium hidden sm:inline">Shipping & Payment</span>
         </div>
         <div className="flex-1 h-1 bg-theme-tertiary rounded-full">
-          <div className={`h-full bg-(--color-primary-600) rounded-full transition-all duration-500 ${step >= 2 ? 'w-full' : 'w-0'}`} />
+          <div className={`h-full bg-(--color-primary-600) rounded-full transition-all duration-500 ${step >= 2 || isCODReady ? 'w-full' : 'w-0'}`} />
         </div>
-        <div className={`flex items-center gap-2 ${step >= 2 ? 'text-(--color-primary-600)' : 'text-theme-muted'}`}>
-          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${step >= 2
-              ? 'bg-(--color-primary-100) text-(--color-primary-600) ring-2 ring-(--color-primary-600) animate-pulse'
-              : 'bg-theme-tertiary text-theme-muted'
+        <div className={`flex items-center gap-2 ${step >= 2 || isCODReady ? 'text-(--color-primary-600)' : 'text-theme-muted'}`}>
+          <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${isCODReady
+              ? 'bg-(--color-primary-600) text-white'
+              : step >= 2
+                ? 'bg-(--color-primary-100) text-(--color-primary-600) ring-2 ring-(--color-primary-600) animate-pulse'
+                : 'bg-theme-tertiary text-theme-muted'
             }`}>
-            2
+            {isCODReady ? <Check className="w-5 h-5" /> : 2}
           </div>
           <span className="font-medium hidden sm:inline">{paymentMethod === "Cash payment" ? "COD" : "Payment"}</span>
         </div>
