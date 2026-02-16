@@ -23,6 +23,11 @@ const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Short names for categories on small screens
+  const shortNames = {
+    "Mobile Phones": "Phones",
+  };
+
   // Fetch products and categories
   useEffect(() => {
     dispatch(getAllProducts(selectedCategory));
@@ -200,7 +205,14 @@ const Home = () => {
                   ) : (
                     <Package className="w-5 h-5" />
                   )}
-                  {cat.name}
+                  {shortNames[cat.name] ? (
+                    <>
+                      <span className="sm:hidden">{shortNames[cat.name]}</span>
+                      <span className="hidden sm:inline">{cat.name}</span>
+                    </>
+                  ) : (
+                    cat.name
+                  )}
                 </button>
               ))}
           </div>
