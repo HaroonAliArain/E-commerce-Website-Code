@@ -127,7 +127,7 @@ const VerifyOTP = () => {
     const isExpiringSoon = timeLeft <= 30;
 
     return (
-        <div className="min-h-[80vh] flex items-center justify-center py-8 sm:py-12 px-4">
+        <div className="min-h-[80vh] flex items-center justify-center py-8 sm:py-12 px-6 sm:px-4">
             <div className="w-full max-w-md">
                 <div className="card p-6 sm:p-8">
                     {/* Header */}
@@ -175,7 +175,7 @@ const VerifyOTP = () => {
 
                     {/* OTP Input */}
                     <form onSubmit={handleSubmit}>
-                        <div className="flex justify-center gap-2 sm:gap-3 mb-6 sm:mb-8">
+                        <div className="flex justify-center gap-1 sm:gap-3 mb-6 sm:mb-8">
                             {otp.map((digit, index) => (
                                 <input
                                     key={index}
@@ -187,7 +187,7 @@ const VerifyOTP = () => {
                                     onChange={(e) => handleChange(index, e.target.value)}
                                     onKeyDown={(e) => handleKeyDown(index, e)}
                                     onPaste={index === 0 ? handlePaste : undefined}
-                                    className="w-11 h-13 sm:w-13 sm:h-15 text-center text-xl sm:text-2xl font-bold rounded-xl
+                                    className="w-9 h-11 sm:w-12 sm:h-14 text-center text-lg sm:text-xl font-bold rounded-lg sm:rounded-xl
                     bg-theme-primary border-2 border-theme-primary text-theme-primary
                     focus:border-(--color-primary-500) focus:ring-2 focus:ring-(--color-primary-500)/20
                     transition-all duration-200 outline-none"
