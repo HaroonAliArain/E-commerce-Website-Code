@@ -17,6 +17,7 @@ import MyOrders from "./pages/user/MyOrders";
 import OrderDetails from "./pages/user/OrderDetails";
 import Login from "./pages/user/Login";
 import Register from "./pages/user/Register";
+import VerifyOTP from "./pages/user/VerifyOTP";
 import Profile from "./pages/user/Profile";
 
 // Static Pages
@@ -58,6 +59,7 @@ const App = () => {
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/verify-otp" element={<VerifyOTP />} />
           <Route path="/terms" element={<TermsConditions />} />
           <Route path="/privacy" element={<PrivacyPolicy />} />
           <Route path="/faq" element={<FAQ />} />

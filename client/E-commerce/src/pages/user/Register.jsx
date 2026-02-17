@@ -9,7 +9,7 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user, loading, error, isAuthenticated } = useSelector(
+  const { loading, error, success, registeredEmail } = useSelector(
     (state) => state.auth
   );
 
@@ -40,11 +40,11 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated && user) {
-      toast.success(`Welcome, ${user.name}! Registration successful!`);
-      navigate("/");
+    if (success && registeredEmail) {
+      toast.success("OTP sent to your email! Please verify.");
+      navigate("/verify-otp");
     }
-  }, [isAuthenticated, user, navigate]);
+  }, [success, registeredEmail, navigate]);
 
   useEffect(() => {
     if (error) {

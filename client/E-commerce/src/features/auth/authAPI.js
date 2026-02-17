@@ -10,6 +10,11 @@ export const registerUser = async (registerData) => {
     return response.data;
 }
 
+export const verifyOTPAPI = async (data) => {
+    const response = await api.post("/api/auth/verify-otp", data);
+    return response.data;
+}
+
 export const fetchUserProfile = async () => {
     const token = localStorage.getItem("token");
 
