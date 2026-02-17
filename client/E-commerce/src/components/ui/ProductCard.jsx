@@ -1,16 +1,24 @@
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../features/cart/cartSlice";
 import { ShoppingCart, Eye, ImageOff, Star } from "lucide-react";
 import { toast } from "react-toastify";
 
 const ProductCard = ({ product, showAddToCart = true }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const { cartItems } = useSelector((state) => state.cart);
 
   const addToCartHandler = (e) => {
     e.preventDefault();
     e.stopPropagation();
+
+    const existItem = cartItems.find((item) => item._id === product._id);
+
+    if (existItem) {
+      toast.info(`${product.name} is already in your cart!`);
+      return;
+    }
+
     dispatch(
       addToCart({
         _id: product._id,
@@ -21,7 +29,6 @@ const ProductCard = ({ product, showAddToCart = true }) => {
       })
     );
     toast.success(`${product.name} added to cart!`);
-    navigate("/cart");
   };
 
   const isInStock = product.stock > 0;

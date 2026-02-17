@@ -9,7 +9,10 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const location = useLocation();
   const { user, isAuthenticated } = useSelector((state) => state.auth);
+  const { cartItems } = useSelector((state) => state.cart);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const cartCount = cartItems.length;
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
@@ -67,8 +70,13 @@ const Navbar = () => {
                 <Link to="/products" className={linkClasses("/products")}>
                   <Package className="w-4 h-4" /> Products
                 </Link>
-                <Link to="/cart" className={linkClasses("/cart")}>
+                <Link to="/cart" className={`${linkClasses("/cart")} relative`}>
                   <ShoppingCart className="w-4 h-4" /> Cart
+                  {cartCount > 0 && (
+                    <span className="absolute -top-1 -right-1 w-5 h-5 flex items-center justify-center rounded-full bg-(--color-error-500) text-white text-xs font-bold leading-none">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
                 <Link to="/profile" className={linkClasses("/profile")}>
                   <User className="w-4 h-4" /> Profile
@@ -143,8 +151,13 @@ const Navbar = () => {
                 <Link to="/products" className={mobileLinkClasses("/products")} onClick={closeMenu}>
                   <Package className="w-5 h-5" /> Products
                 </Link>
-                <Link to="/cart" className={mobileLinkClasses("/cart")} onClick={closeMenu}>
+                <Link to="/cart" className={`${mobileLinkClasses("/cart")} relative`} onClick={closeMenu}>
                   <ShoppingCart className="w-5 h-5" /> Cart
+                  {cartCount > 0 && (
+                    <span className="ml-auto w-5 h-5 flex items-center justify-center rounded-full bg-(--color-error-500) text-white text-xs font-bold leading-none">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
                 <Link to="/profile" className={mobileLinkClasses("/profile")} onClick={closeMenu}>
                   <User className="w-5 h-5" /> Profile

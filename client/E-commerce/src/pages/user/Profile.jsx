@@ -97,13 +97,9 @@ const Profile = () => {
                   <span className="text-theme-tertiary font-medium text-sm sm:text-base">Full Name</span>
                   <span className="text-theme-primary text-sm sm:text-base">{user?.name}</span>
                 </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between py-2 sm:py-3 border-b border-theme-primary">
+                <div className="flex flex-col sm:flex-row sm:justify-between py-2 sm:py-3">
                   <span className="text-theme-tertiary font-medium text-sm sm:text-base">Email Address</span>
                   <span className="text-theme-primary text-sm sm:text-base">{user?.email}</span>
-                </div>
-                <div className="flex flex-col sm:flex-row sm:justify-between py-2 sm:py-3">
-                  <span className="text-theme-tertiary font-medium text-sm sm:text-base">Account Type</span>
-                  <span className="text-theme-primary capitalize text-sm sm:text-base">{user?.role || "User"}</span>
                 </div>
               </div>
             </div>
